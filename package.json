@@ -1,0 +1,27 @@
+{
+  "name": "munia",
+  "version": "0.0.1-alpha.2",
+  "description": "Simple and practical JSON Logger",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "tap --no-cov ./test"
+  },
+  "keywords": [
+    "json",
+    "log",
+    "logger"
+  ],
+  "author": "Gagan Bansal",
+  "license": "MIT",
+  "dependencies": {
+    "extend": "^3.0.2",
+    "ip": "^1.1.5",
+    "json-stringify-safe": "^5.0.1"
+  },
+  "devDependencies": {
+    "mockdate": "^3.0.5",
+    "sinon": "^11.1.2",
+    "tap": "^15.0.9",
+    "tmp": "^0.2.1"
+  }
+}
