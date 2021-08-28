@@ -1,6 +1,6 @@
 {
   "name": "munia",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "Simple and practical JSON Logger",
   "main": "./lib/index.js",
   "scripts": {
@@ -13,6 +13,10 @@
   ],
   "author": "Gagan Bansal",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gagan-bansal/munia"
+  },
   "dependencies": {
     "extend": "^3.0.2",
     "ip": "^1.1.5",
