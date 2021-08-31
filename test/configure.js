@@ -28,7 +28,7 @@ const munia = require('../lib/index.js')
   })
 
   log.info('print info with initial meta')
-  t.deepEqual(JSON.parse(process.stdout.write.getCall(-1).args[0]),
+  t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
     JSON.parse('{"time":946684800000,"level":"info","message":"print info with initial meta","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"app":"munia"}'),
     'print info with initial meta')
 
@@ -48,12 +48,12 @@ const munia = require('../lib/index.js')
   })
 
   log2.error('print error with custom error level with custom levels')
-  t.deepEqual(JSON.parse(process.stdout.write.getCall(-1).args[0]),
+  t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
     JSON.parse('{"time":946684800000,"level":"error","message":"print error with custom error level with custom levels","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
     'print error with custom error level with custom levels')
 
   log2.info('print info with custom levels')
-  t.deepEqual(JSON.parse(process.stdout.write.getCall(-1).args[0]),
+  t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
     JSON.parse('{"time":946684800000,"level":"info","message":"print info with custom levels","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
     'print info with custom levels')
 
@@ -72,7 +72,7 @@ const munia = require('../lib/index.js')
 
   defaultLevels.forEach(level => {
     log3[level](`print ${level} with custom log level`)
-    t.deepEqual(JSON.parse(process.stdout.write.getCall(-1).args[0]),
+    t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
       JSON.parse(`{"time":946684800000,"level":"${level}","message":"print ${level} with custom log level","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
       `print ${level} with custom log level`)
   })
@@ -80,15 +80,15 @@ const munia = require('../lib/index.js')
 // custom levels and logLevel
   const log4 = munia({customLevels, logLevel: 'debug'})
 
-  t.type(log3, 'object', 'munia returns a object')
+  t.type(log4, 'object', 'munia returns a object')
 
   customLevels.forEach(level => {
-    t.type(log3[level], 'function', `with custom level and logLevel instance has function ${level}`)
+    t.type(log4[level], 'function', `with custom level and logLevel instance has function ${level}`)
   })
 
   customLevels.forEach(level => {
-    log3[level](`print ${level} with custom level and logLevel`)
-    t.deepEqual(JSON.parse(process.stdout.write.getCall(-1).args[0]),
+    log4[level](`print ${level} with custom level and logLevel`)
+    t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
       JSON.parse(`{"time":946684800000,"level":"${level}","message":"print ${level} with custom level and logLevel","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
       `print ${level} with custom level and logLevel`)
   })
@@ -96,6 +96,17 @@ const munia = require('../lib/index.js')
 // wrong logLevel passed
 
   t.throws(() => {munia({logLevel: 'wrong'})}, 'should throw for wrong logLevel configured')
+
+// serializer
+
+  const serializer = function (json) {
+    return [json.time, json.level, json.message].join('\t')
+  }
+  const log5 = munia({serializer})
+  log5.info('tab separated output')
+  t.same(process.stdout.write.getCall(-1).args[0],
+    '946684800000\tinfo\ttab separated output\n',
+    `tab separated output with custom serializer`)
 
 sinon.restore()
 
