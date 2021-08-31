@@ -97,16 +97,16 @@ const munia = require('../lib/index.js')
 
   t.throws(() => {munia({logLevel: 'wrong'})}, 'should throw for wrong logLevel configured')
 
-// serializer
+// formatter
 
-  const serializer = function (json) {
+  const formatter = function (json) {
     return [json.time, json.level, json.message].join('\t')
   }
-  const log5 = munia({serializer})
+  const log5 = munia({formatter})
   log5.info('tab separated output')
   t.same(process.stdout.write.getCall(-1).args[0],
     '946684800000\tinfo\ttab separated output\n',
-    `tab separated output with custom serializer`)
+    `tab separated output with custom formatter`)
 
 sinon.restore()
 
