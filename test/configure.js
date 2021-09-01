@@ -108,5 +108,22 @@ const munia = require('../lib/index.js')
     '946684800000\tinfo\ttab separated output\n',
     `tab separated output with custom formatter`)
 
+// differnt levels' names
+  const myLevels = ['app_error', 'app_info', 'app_debug']
+  const log6 = munia({levels: myLevels, logLevel: 'app_debug'})
+
+  t.type(log6, 'object', 'munia returns a object')
+
+  myLevels.forEach(level => {
+    t.type(log6[level], 'function', `with different levels name and logLevel instance has function ${level}`)
+  })
+
+  myLevels.forEach(level => {
+    log6[level](`print ${level} with different levels name and logLevel`)
+    t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
+      JSON.parse(`{"time":946684800000,"level":"${level}","message":"print ${level} with different levels name and logLevel","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
+      `print ${level} with different levels name and logLevel`)
+  })
+
 sinon.restore()
 
