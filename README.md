@@ -2,7 +2,7 @@
 
 **Simple and practical JSON Logger**
 
-A JSON logger that can work very well without configuration, though it can be customise for standard logging options.
+A JSON logger that can work very well without configuration, though it can be customised for standard logging options.
 
 #### Installation
 
@@ -48,7 +48,7 @@ log.info('log userId also', {userId: 'foo'})
 ```
 Output: `{"time":946684800000,"level":"info", "message":"log userId also", "hostname":"my-machine", "hostip":"127.0.0.1", "pid":123, "userId":"foo"}`
 
-Do not log process id, host name and host ip. Any of these can be set as false.
+Do not include process id, host name and host ip. Any of these can be set as false.
 ```javascript
 const log = munia({hostname: false, hostip: false, pid: false})
 log.info('lean log')

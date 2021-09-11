@@ -16,16 +16,15 @@ sinon.stub(Date.prototype, 'getTimezoneOffset').returns(-330)
 const munia = require('../lib/index.js')
 
 // system info options
-
   const log = munia({
     hostname: false,
     hostip: false,
-    pid: false
+    pid: true
   })
-  log.info('system info should not get printed')
+  log.info('system info should not get printed except pid')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"level":"info","message":"system info should not get printed"}'),
-    'system info should not get printed')
+    JSON.parse('{"time":946684800000,"level":"info","message":"system info should not get printed except pid","pid":"123"}'),
+    'system info should not get printed except pid')
 
   const log2 = munia({
     hostname: 'prod-server',
