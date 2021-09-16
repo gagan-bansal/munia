@@ -17,8 +17,6 @@ const munia = require('../lib/index.js')
 // sub levels
   const subLevels = ['level1', 'level2', 'level3']
   let log = munia()
-  sinon.spy(log)
-  sinon.spy(log.info)
 
   log.info()
   t.ok(process.stdout.write.notCalled, 'log nothing')
@@ -37,7 +35,7 @@ const munia = require('../lib/index.js')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
     JSON.parse('{"time":946684800000,"level":"info","message":"log meta","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
     'log meta')
-  
+
   log.info('log two', 'strings')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
     JSON.parse('{"time":946684800000,"level":"info","message":"log two strings","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
@@ -47,7 +45,7 @@ const munia = require('../lib/index.js')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
     JSON.parse('{"time":946684800000,"level":"info","message":"log namy strings with meta info","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
     'log namy strings with meta info')
-  
+
   log.info('log printf %s and number %d', 'string', 100)
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
     JSON.parse('{"time":946684800000,"level":"info","message":"log printf string and number 100","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
@@ -57,4 +55,10 @@ const munia = require('../lib/index.js')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
     JSON.parse('{"time":946684800000,"level":"info","message":"log namy placeholders with meta info: (3.14)","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
     'log namy placeholders with meta info')
-  
+
+  const err = new Error('error foo')
+  log.error('log serialize error', {user: 'foo', error: err})
+  let actual = JSON.parse(process.stdout.write.getCall(-1).args[0])
+  t.ok(actual.error && actual.error.name === 'Error', 'error serialiezed with name')
+  t.ok(actual.message && actual.error.message === 'error foo', 'error serialized with message')
+  t.ok(actual.message && typeof actual.error.stack === 'string', 'error serialized with stack')
