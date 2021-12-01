@@ -7,6 +7,7 @@ const MockDate = require('mockdate')
 const tmp = require('tmp')
 const fs = require('fs')
 
+sinon.stub(process.env, 'NODE_ENV').value(null)
 sinon.stub(process, 'pid').value(123)
 sinon.stub(ip, 'address').returns('127.0.0.1')
 sinon.stub(os, 'hostname').returns('my-machine')

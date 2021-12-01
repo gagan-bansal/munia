@@ -73,9 +73,11 @@ Output
 ```
 
 #### Test
+
 ```shell
-npm run test
+npm test
 ```
 
+## License
 
-
+Licensed under [MIT](./LICENSE).

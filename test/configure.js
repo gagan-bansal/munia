@@ -9,6 +9,7 @@ const fs = require('fs')
 
 let outSpy = sinon.spy(process.stdout, 'write')
 let errSpy = sinon.spy(process.stderr, 'write')
+sinon.stub(process.env, 'NODE_ENV').value(null)
 sinon.stub(process, 'pid').value(123)
 sinon.stub(ip, 'address').returns('127.0.0.1')
 sinon.stub(os, 'hostname').returns('my-machine')
