@@ -78,6 +78,10 @@ Output
 npm test
 ```
 
+#### To be implemented
+
+* Logger function after silly "limit" that run only n times. It would be helpful for debugging in for or while loop.
+
 ## License
 
 Licensed under [MIT](./LICENSE).
