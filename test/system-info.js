@@ -24,7 +24,7 @@ const munia = require('../lib/index.js')
   })
   log.info('system info should not get printed except pid')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"level":"info","message":"system info should not get printed except pid","pid":"123"}'),
+    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"system info should not get printed except pid","pid":"123"}'),
     'system info should not get printed except pid')
 
   const log2 = munia({
@@ -34,7 +34,7 @@ const munia = require('../lib/index.js')
   })
   log2.info('system info passed as string')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"level":"info","message":"system info passed as string","hostname":"prod-server","hostip":"10.0.0.1","pid":"567"}'),
+    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"system info passed as string","hostname":"prod-server","hostip":"10.0.0.1","pid":"567"}'),
     'system info passed as string')
 
   const log3 = munia({
@@ -44,7 +44,7 @@ const munia = require('../lib/index.js')
   })
   log3.info('system info passed as function')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"level":"info","message":"system info passed as function","hostname":"DC1-my-machine","hostip":"127.0.0.1","pid":111}'),
+    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"system info passed as function","hostname":"DC1-my-machine","hostip":"127.0.0.1","pid":111}'),
     'system info passed as function')
 
   // test argv
@@ -56,7 +56,7 @@ const munia = require('../lib/index.js')
   })
   log4.info('log process argv')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"level":"info","message":"log process argv", "foo":"bar","commands":["action"]}'),
+    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"log process argv", "foo":"bar","commands":["action"]}'),
     'log process argv')
 
   const log5 = munia({
@@ -67,7 +67,7 @@ const munia = require('../lib/index.js')
   })
   log5.info('do not log process argv')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"level":"info","message":"do not log process argv"}'),
+    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"do not log process argv"}'),
     'do not log process argv')
 
 

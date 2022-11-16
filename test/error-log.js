@@ -30,11 +30,11 @@ const defaultLevels = ['error', 'warn', 'info', 'http', 'verbose', 'debug', 'sil
   errLevels.forEach(level => {
     log4[level](`print ${level} to stderr and stdout with logErrorToStderr true`)
     assert.deepEqual(JSON.parse(process.stderr.write.getCall(-1).args[0]),
-      JSON.parse(`{"time":946684800000,"level":"${level}","message":"print ${level} to stderr and stdout with logErrorToStderr true","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
+      JSON.parse(`{"time":946684800000,"app":"munia","level":"${level}","message":"print ${level} to stderr and stdout with logErrorToStderr true","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
       `print ${level} to stderr with logErrorToStderr true`)
     
     assert.deepEqual(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-      JSON.parse(`{"time":946684800000,"level":"${level}","message":"print ${level} to stderr and stdout with logErrorToStderr true","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
+      JSON.parse(`{"time":946684800000,"app":"munia","level":"${level}","message":"print ${level} to stderr and stdout with logErrorToStderr true","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
       `print ${level} to stdout with logErrorToStderr true`)
   })
 
@@ -42,7 +42,7 @@ const defaultLevels = ['error', 'warn', 'info', 'http', 'verbose', 'debug', 'sil
   outLevels.forEach(level => {
     log4[level](`print ${level} to stdout with logErrorToStderr true`)
     t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-      JSON.parse(`{"time":946684800000,"level":"${level}","message":"print ${level} to stdout with logErrorToStderr true","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
+      JSON.parse(`{"time":946684800000,"app":"munia","level":"${level}","message":"print ${level} to stdout with logErrorToStderr true","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
       `print ${level} to stdout with logErrorToStderr true`)
   })
 
