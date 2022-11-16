@@ -47,4 +47,28 @@ const munia = require('../lib/index.js')
     JSON.parse('{"time":946684800000,"level":"info","message":"system info passed as function","hostname":"DC1-my-machine","hostip":"127.0.0.1","pid":111}'),
     'system info passed as function')
 
+  // test argv
+  sinon.stub(process, 'argv').value(['node', 'script', 'action', '--foo', 'bar' ])
+  const log4 = munia({
+    hostname: false,
+    hostip: false,
+    pid: false
+  })
+  log4.info('log process argv')
+  t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
+    JSON.parse('{"time":946684800000,"level":"info","message":"log process argv", "foo":"bar","commands":["action"]}'),
+    'log process argv')
+
+  const log5 = munia({
+    hostname: false,
+    hostip: false,
+    pid: false,
+    argv: false
+  })
+  log5.info('do not log process argv')
+  t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
+    JSON.parse('{"time":946684800000,"level":"info","message":"do not log process argv"}'),
+    'do not log process argv')
+
+
 sinon.restore()
