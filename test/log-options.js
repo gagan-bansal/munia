@@ -24,37 +24,37 @@ const munia = require('../lib/index.js')
 
   log.info('log message string')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"log message string","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"log message string","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
     'log message string')
 
   log.info('log message string and meta', {user: 'foo'})
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"log message string and meta","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"log message string and meta","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
     'log message string and meta')
 
   log.info({ message: 'log meta', user: 'foo'})
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"log meta","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"log meta","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
     'log meta')
 
   log.info('log two', 'strings')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"log two strings","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"log two strings","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
     'log two strings')
 
   log.info('log', 'namy', 'strings', 'with meta info', {user: 'foo'})
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"log namy strings with meta info","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"log namy strings with meta info","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
     'log namy strings with meta info')
 
   log.info('log printf %s and number %d', 'string', 100)
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"log printf string and number 100","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"log printf string and number 100","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
     'log printf string')
 
   log.info('log %s placeholders %s: (%f)', 'namy', 'with meta info', 3.14, {user: 'foo'})
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"log namy placeholders with meta info: (3.14)","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"log namy placeholders with meta info: (3.14)","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"user":"foo"}'),
     'log namy placeholders with meta info')
 
   const err = new Error('error foo')

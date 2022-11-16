@@ -28,17 +28,17 @@ const munia = require('../lib/index.js')
 
   log.error('print error')
   t.same( JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"error","message":"print error","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"error","message":"print error","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
     'log error')
 
   log.warn('print warn')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"warn","message":"print warn","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"warn","message":"print warn","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
     'log warn')
 
   log.info('print info')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"print info","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"print info","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
     'print info')
 
   outSpy.restore()
@@ -72,17 +72,17 @@ const munia = require('../lib/index.js')
 
   log2.error('print error')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"error","message":"print error","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"error","message":"print error","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
     'log error')
 
   log2.warn('print warn')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"warn","message":"print warn","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"warn","message":"print warn","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
     'log warn')
 
   log2.info('print info')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"print info","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"print info","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"module":"main-module"}'),
     'print info')
 
   outSpy.restore()

@@ -28,17 +28,17 @@ defaultLevels.forEach(level => {
 
 lg.error('print error')
 t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-  JSON.parse('{"time":946684800000,"app":"munia","level":"error","message":"print error","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
+  JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"error","message":"print error","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
   'log error')
 
 lg.warn('print warn')
 t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-  JSON.parse('{"time":946684800000,"app":"munia","level":"warn","message":"print warn","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
+  JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"warn","message":"print warn","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
   'log warn')
 
 lg.info('print info')
 t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-  JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"print info","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
+  JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"print info","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
   'print info')
 
 outSpy.restore()

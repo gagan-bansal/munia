@@ -30,7 +30,7 @@ const defaultLevels = ['error', 'warn', 'info', 'http', 'verbose', 'debug', 'sil
   logLevels.forEach(level => {
     log[level](`print ${level} with stream option`)
     t.same(JSON.parse(outStream.write.getCall(-1).args[0]),
-      JSON.parse(`{"time":946684800000,"app":"munia","level":"${level}","message":"print ${level} with stream option","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
+      JSON.parse(`{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"${level}","message":"print ${level} with stream option","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
       `print ${level} with stream option`)
   })
 

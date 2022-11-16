@@ -30,7 +30,7 @@ const munia = require('../lib/index.js')
 
   log.info('print info with initial meta')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"print info with initial meta","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"app":"munia"}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"print info with initial meta","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"app":"munia"}'),
     'print info with initial meta')
 
 // custom levels
@@ -50,12 +50,12 @@ const munia = require('../lib/index.js')
 
   log2.error('print error with custom error level with custom levels')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"error","message":"print error with custom error level with custom levels","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"error","message":"print error with custom error level with custom levels","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
     'print error with custom error level with custom levels')
 
   log2.info('print info with custom levels')
   t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-    JSON.parse('{"time":946684800000,"app":"munia","level":"info","message":"print info with custom levels","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
+    JSON.parse('{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"print info with custom levels","hostname":"my-machine","hostip":"127.0.0.1","pid":123}'),
     'print info with custom levels')
 
   outSpy.restore()
@@ -74,7 +74,7 @@ const munia = require('../lib/index.js')
   defaultLevels.forEach(level => {
     log3[level](`print ${level} with custom log level`)
     t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-      JSON.parse(`{"time":946684800000,"app":"munia","level":"${level}","message":"print ${level} with custom log level","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
+      JSON.parse(`{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"${level}","message":"print ${level} with custom log level","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
       `print ${level} with custom log level`)
   })
 
@@ -90,7 +90,7 @@ const munia = require('../lib/index.js')
   customLevels.forEach(level => {
     log4[level](`print ${level} with custom level and logLevel`)
     t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-      JSON.parse(`{"time":946684800000,"app":"munia","level":"${level}","message":"print ${level} with custom level and logLevel","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
+      JSON.parse(`{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"${level}","message":"print ${level} with custom level and logLevel","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
       `print ${level} with custom level and logLevel`)
   })
 
@@ -106,7 +106,7 @@ const munia = require('../lib/index.js')
   const log5 = munia({formatter})
   log5.info('tab separated output')
   t.same(process.stdout.write.getCall(-1).args[0],
-    '946684800000\tinfo\ttab separated output\n',
+    '2000-01-01T05:30:00.000+05:30\tinfo\ttab separated output\n',
     `tab separated output with custom formatter`)
 
 // differnt levels' names
@@ -122,7 +122,7 @@ const munia = require('../lib/index.js')
   myLevels.forEach(level => {
     log6[level](`print ${level} with different levels name and logLevel`)
     t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-      JSON.parse(`{"time":946684800000,"app":"munia","level":"${level}","message":"print ${level} with different levels name and logLevel","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
+      JSON.parse(`{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"${level}","message":"print ${level} with different levels name and logLevel","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
       `print ${level} with different levels name and logLevel`)
   })
 

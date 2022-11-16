@@ -35,7 +35,7 @@ const munia = require('../lib/index.js')
   logLevels.forEach(level => {
     log[level](`print ${level} with sub levels`)
     t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-      JSON.parse(`{"time":946684800000,"app":"munia","level":"${level}","message":"print ${level} with sub levels","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
+      JSON.parse(`{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"${level}","message":"print ${level} with sub levels","hostname":"my-machine","hostip":"127.0.0.1","pid":123}`),
       `print ${level} with sub levels`)
   })
 
@@ -47,7 +47,7 @@ const munia = require('../lib/index.js')
   subLevels.forEach(subLevel => {
     log.info[subLevel](`print info: with sub level ${subLevel}`)
     t.same(JSON.parse(process.stdout.write.getCall(-1).args[0]),
-      JSON.parse(`{"time":946684800000,"app":"munia","level":"info","message":"print info: with sub level ${subLevel}","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"subLevel": "${subLevel}"}`),
+      JSON.parse(`{"time":"2000-01-01T05:30:00.000+05:30","app":"munia","level":"info","message":"print info: with sub level ${subLevel}","hostname":"my-machine","hostip":"127.0.0.1","pid":123,"subLevel": "${subLevel}"}`),
       `print info: with sub level ${subLevel}`)
   })
 

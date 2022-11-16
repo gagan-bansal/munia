@@ -16,7 +16,7 @@ t.test('time function', async t => {
 
   const ts = time({})
   t.type(ts, 'function', 'time returns function')
-  t.equal(ts(), 946684800000, 'default time is epoch time')
+  t.equal(ts(), '2000-01-01T05:30:00.000+05:30', 'default time is local time')
 
   const tsEpoch = time({timeFormat: 'epoch'})
   t.equal(tsEpoch(), 946684800000, 'time with epoch option')
