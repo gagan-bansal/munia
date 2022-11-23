@@ -4,7 +4,8 @@
   "description": "Simple and practical JSON Logger",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "tap --no-cov ./test"
+    "test": "tap --no-cov ./test",
+    "prerelease": "npm version prerelease --preid=alpha"
   },
   "keywords": [
     "json",
