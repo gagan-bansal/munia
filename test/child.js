@@ -29,8 +29,13 @@ defaultLevels.forEach(level => {
   t.type(child[level], 'function', `child instance has function ${level}`)
 })
 
+// check loguuid
+child.info('has loguuid');
+const actualLog = JSON.parse(process.stdout.write.getCall(-1).args[0])
+t.hasProp(actualLog, 'loguuid', 'child has loguuid property');
+
 // child with time enabled
-let childWithTime = lg.child(null, {enableTimeTaken: true});
+let childWithTime = lg.child();
 let childTimeSpy = sinon.spy(childWithTime)
 const timeFunctions = ['time', 't', 'timeEnd', 'te']
 defaultLevels.forEach(level => {
