@@ -37,7 +37,7 @@ t.hasProp(actualLog, 'loguuid', 'child has loguuid property');
 // child with time enabled
 let childWithTime = lg.child();
 let childTimeSpy = sinon.spy(childWithTime)
-const timeFunctions = ['time', 't', 'timeEnd', 'te']
+const timeFunctions = ['time', 't', 'timeLog', 'tl', 'timeEnd', 'te']
 defaultLevels.forEach(level => {
   t.type(childWithTime[level], 'function', `childWithTime instance has function ${level}`)
   timeFunctions.forEach( func => {
