@@ -23,13 +23,14 @@
     "fast-printf": "^1.6.9",
     "ip": "^1.1.5",
     "json-stringify-safe": "^5.0.1",
+    "minimist": "^1.2.8",
     "nanoid": "^3.3.4",
     "serialize-error": "^8.1.0"
   },
   "devDependencies": {
     "mockdate": "^3.0.5",
     "sinon": "^11.1.2",
-    "tap": "^16.3.0",
+    "tap": "^16.3.4",
     "tmp": "^0.2.1"
   }
 }
