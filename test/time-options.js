@@ -1,6 +1,6 @@
 const t = require('tap')
 const sinon = require('sinon')
-const ip = require('ip')
+const ip = require('../lib/local-ip-address.js')
 const os = require('os')
 const MockDate = require('mockdate')
 const tmp = require('tmp')
