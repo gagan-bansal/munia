@@ -21,7 +21,7 @@
   "dependencies": {
     "extend": "^3.0.2",
     "fast-printf": "^1.6.9",
-    "ip": "^1.1.5",
+    "ip": "^2.0.1",
     "json-stringify-safe": "^5.0.1",
     "minimist": "^1.2.8",
     "nanoid": "^3.3.4",
